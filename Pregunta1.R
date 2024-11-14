@@ -86,11 +86,13 @@ pnorm(98, mu, sigma/sqrt(4)) # coinciden los resultados
 ssq <- function(i){var(rnorm(100, mean=mu, sd=sigma))}
 ssq100000 <- sapply(1:100000, ssq)
 
+W <- 98*(100-1)/sigma^2 # tipificamos el número como una chi
 hist(ssq100000, freq=FALSE)
+
 mean(ssq100000>98)
 
 hist(ssq100000*(100-1)/sigma^2, freq=FALSE)
-curve(dchisq(x,100-1),add=TRUE, col="red")
-1-pchisq(98, 100-1) # coinciden los resultados
+curve(dchisq(x,100-1), add=TRUE, col="red")
+1-pchisq(w, 100-1) # coinciden los resultados
 
 
